@@ -41,6 +41,16 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
+{
+  name: "Daniel Radcliffe",
+  appearsIn: "Horns",
+  faveStatus: "non-problemtic"
+
+}
+{
+  name: "Emma Stone"
+}
+
 
 app.get('/api', (req, res) => {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
