@@ -1,10 +1,12 @@
-const mongoose = require('mongoose'),
-Schema = mongoose.Schema;
+ const mongoose = require('mongoose');
+ const Schema = mongoose.Schema;
+ const PaletteSchema = new Schema({
+    _id: Number,
+    shade: String,
+    // coverart: "",
+    price: Number,
+  });
 
-const Palette = new Schema({
-   description: String
- });
-
- const Palette = mongoose.model('Palette', PaletteSchema);
+  const Palette = mongoose.model('Palette', PaletteSchema);
 
  module.exports = Palette;

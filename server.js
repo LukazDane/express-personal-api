@@ -18,7 +18,26 @@ app.use(function(req, res, next) {
 /************
  * DATABASE *
  ************/
- const db = require('./models');
+ let palettes = [
+   {
+   _id: 1,
+   shade: "warm",
+   //coverArt: "https://www.imageurl.com/default/this%20isnt%20a%20url"
+   price: 5.99
+   },
+   {
+   _id: 2,
+   shade: "cool",
+   //coverArt: "https://www.imageurl.com/default/this%20isnt%20a%20url"
+   price: 4.99
+   },
+   {
+   _id: 3,
+   shade: "neutral",
+   //coverArt: "https://www.imageurl.com/default/this%20isnt%20a%20url"
+   price: 2.99
+   },
+ ]
 
 /**********
  * ROUTES *
@@ -41,46 +60,42 @@ app.get('/', (req, res) => {
  * JSON API Endpoints
  */
 
+// find all
+app.get('/api/palettes', (req, res) => {
+  db.Palettes.find(err, foundPalettes => {
+    if(err) {
+      console.log(`index error, $(err)`, () => {
+        res.sendStatus(500);
+      });
+      res.json(foundPalettes);
+    }});
+// find 1
+    app.get('api/palettes/:id', (req, res) => {
+      db.Palettes.findOne({_id: req.params.id}, (err, data) => {
+      if(err) {
+        console.log("All T, no shade. Maybe try a paper bag...");
+      }
+      res.json(data);
+      });
+    });
 
-app.get('/api', (req, res) => {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
+      // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
-  res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true,
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/LukazDane/express-personal-api/master/README.md", // CHANGE ME
-    baseUrl: "https://fierce-taiga-34325.herokuapp.com/", // CHANGE ME
-    endpoints: [
+   res.json({
+  //   woopsIForgotToDocumentAllMyEndpoints: true,
+     message: "Welcome to my personal api! Here's what you need to know!",
+     documentationUrl: "https://github.com/LukazDane/express-personal-api/blob/master/README.md", // CHANGE ME
+     baseUrl: "https://fierce-taiga-34325.herokuapp.com/", // CHANGE ME
+     endpoints: [
         {method: "GET",
-      path: "/api",
-      type: ["canvas", "primed canvas", "white paper", "acid-free paper", "glass", "any and every thing!!" ], //
-      forTone: "These colors look great on" + type + "!",
-      description: "Describes all available endpoints",
-        shade: {
-          cool: ["blue", "sea foam", "periwinkle"],
-          warm: ["red", "umber", "yellow"],
-          neutral: ["black", "white", "rust", "port-wine", "hunter-green", "bronze", "charcoal"]
-      }
-    },
-        {method: "GET", 
-      path: "/api/profile", 
-      description: "Data about me"}, 
-
-        {method: "POST", 
-      path: "/api/palette", 
-      description: "Makes a swatch"}, 
-
-        {method: "PUT", 
-      path: "/api/palette", 
-      description: "Edit color choices"},
-
-        {method: "DELETE", 
-      path: "/api/palette", 
-      description: "Deletes entire pallete"},
-    ]
-  })
-});
+  //       path: "/api",
+  //       type: String,
+  //       forTone: "These colors look great on" + type + "!",
+  //       description: "Describes all available endpoints",
+         shade: "cool"}    ]
+     });
+    });
 
 /**********
  * SERVER *
