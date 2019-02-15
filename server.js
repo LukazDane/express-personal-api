@@ -67,18 +67,18 @@ app.get('/api', (req, res) => {
         {method: "GET", 
       path: "/api/profile", 
       description: "Data about me"}, 
+      
         {method: "POST", 
       path: "/api/palette", 
       description: "Makes a swatch"}, 
+
         {method: "PUT", 
       path: "/api/palette", 
       description: "Edit color choices"},
+
         {method: "DELETE", 
       path: "/api/palette", 
       description: "Deletes entire pallete"},
-        {method: "", 
-      path: "/api/", 
-      description: ""}
     ]
   })
 });
