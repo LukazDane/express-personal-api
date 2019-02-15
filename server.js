@@ -1,7 +1,7 @@
 // require express and other modules
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose')
 // parse incoming urlencoded form data
 // and populate the req.body object
 const bodyParser = require('body-parser');
@@ -33,7 +33,7 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
-app.get('/', function homepage(req, res) {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -41,15 +41,6 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
-{
-  name: "Daniel Radcliffe",
-  appearsIn: "Horns",
-  faveStatus: "non-problemtic"
-
-}
-{
-  name: "Emma Stone"
-}
 
 
 app.get('/api', (req, res) => {
@@ -62,9 +53,32 @@ app.get('/api', (req, res) => {
     documentationUrl: "https://github.com/example-username/express-personal-api/README.md", // CHANGE ME
     baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+        {method: "GET",
+      path: "/api",
+      type: ["canvas", "primed canvas", "white paper", "acid-free paper", "glass", "any and every thing!!" ], //
+      forTone: "These colors look great on" + type + "!",
+      description: "Describes all available endpoints",
+        shade: {
+          cool: ["blue", "sea foam", "periwinkle"],
+          warm: ["red", "umber", "yellow"],
+          neutral: ["black", "white", "rust", "port-wine", "hunter-green", "bronze", "charcoal"]
+      }
+    },
+        {method: "GET", 
+      path: "/api/profile", 
+      description: "Data about me"}, 
+        {method: "POST", 
+      path: "/api/palette", 
+      description: "Makes a swatch"}, 
+        {method: "PUT", 
+      path: "/api/palette", 
+      description: "Edit color choices"},
+        {method: "DELETE", 
+      path: "/api/palette", 
+      description: "Deletes entire pallete"},
+        {method: "", 
+      path: "/api/", 
+      description: ""}
     ]
   })
 });
