@@ -18,8 +18,7 @@ app.use(function(req, res, next) {
 /************
  * DATABASE *
  ************/
-
-// const db = require('./models');
+ const db = require('./models');
 
 /**********
  * ROUTES *
@@ -50,7 +49,7 @@ app.get('/api', (req, res) => {
   res.json({
     woopsIForgotToDocumentAllMyEndpoints: true,
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/LukazDane/express-personal-api/blob/master/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/LukazDane/express-personal-api/master/README.md", // CHANGE ME
     baseUrl: "https://fierce-taiga-34325.herokuapp.com/", // CHANGE ME
     endpoints: [
         {method: "GET",
@@ -67,7 +66,7 @@ app.get('/api', (req, res) => {
         {method: "GET", 
       path: "/api/profile", 
       description: "Data about me"}, 
-      
+
         {method: "POST", 
       path: "/api/palette", 
       description: "Makes a swatch"}, 
