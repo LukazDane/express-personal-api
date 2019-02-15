@@ -48,7 +48,7 @@ app.get('/api', (req, res) => {
   // It would be seriously overkill to save any of this to your database.
   // But you should change almost every line of this response.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: false,
+    woopsIForgotToDocumentAllMyEndpoints: true,
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/LukazDane/express-personal-api/blob/master/README.md", // CHANGE ME
     baseUrl: "https://fierce-taiga-34325.herokuapp.com/", // CHANGE ME
